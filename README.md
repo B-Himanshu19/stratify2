@@ -4,8 +4,6 @@
 
 A comprehensive project management system that streamlines workflow optimization, task allocation, and project planning. This tool helps teams collaborate efficiently by automatically matching skills to tasks and providing AI-driven insights for better project execution.
 
-## 📽 Demo Video
-
 ## ✨ Key Features
 
 - **Strategic Planning**: Create and manage detailed project plans with clear goals and realistic deadlines
@@ -110,7 +108,7 @@ A comprehensive project management system that streamlines workflow optimization
 ### System Status
 
 - **GET /health**
-  - Checks the server status and services availability
+  - Checks the server status and service availability
   - **Response**:
     ```json
     {
@@ -143,126 +141,138 @@ A comprehensive project management system that streamlines workflow optimization
 
 2. **Set up the backend**
 
-   ```bash
-   cd backend
-   python -m venv venv
+```bash
+cd backend
+python -m venv venv
 
-   # On Windows
-   venv\Scripts\activate
+# On Windows
 
-   # On macOS/Linux
-   source venv/bin/activate
+venv\Scripts\activate
 
-   pip install -r requirements.txt
-   ```
+# On macOS/Linux
+
+source venv/bin/activate
+
+pip install -r requirements.txt
+```
 
 3. **Set up the frontend**
-   ```bash
-   cd ../frontend_stratify
-   npm install
-   # OR
-   yarn install
-   ```
 
-### Running the Application
+```bash
+
+cd frontend
+npm install
+
+# OR
+
+yarn install
+```
+
+Running the Application
 
 1. **Start the backend server**
 
-   ```bash
-   cd backend
+- Log in or sign up at https://console.mistral.ai
+
+- Go to API Keys and generate one (free tier)
+
+- Set the API key temporarily in your terminal:
+
+  ```bash
+   $env:MISTRAL_API_KEY="sk-XXXXXXXXXXXXXXXXXXXXXXXX"
    python app.py
-   # Server will run on http://127.0.0.1:5000
-   ```
+  ```
 
 2. **Start the frontend development server**
 
-   ```bash
-   cd frontend_stratify
-   npm run dev
-   # OR
-   yarn dev
-   # Frontend will be available at http://localhost:5173
-   ```
+```bash
+ cd frontend
+ npm run dev
+
+ # OR
+ yarn dev
+```
+
+- Frontend will be available at: http://localhost:5173
 
 3. **Access the application**
-   - Open your browser and navigate to [http://localhost:5173](http://localhost:5173)
 
-## 📱 Usage Guide
+Open your browser and navigate to: http://localhost:5173
 
-### Creating a New Project
+📱 Usage Guide
+
+Creating a New Project:-
 
 1. Navigate to the Dashboard and click "New Project"
+
 2. Fill in project details including name, description, and timeline
+
 3. Add team members manually
+
 4. Define tasks with required skills and dependencies
-5. Generate project plan and review AI recommendations
 
-### Importing Team Skills
+5. Generate the project plan and review AI recommendation
 
-1. Go to "Team Management" section
-2. Click "Upload Resume" for a team member
+Importing Team Skills:-
+
+1. Go to the "Team Management" section
+
+2. lick "Upload Resume" for a team member
+
 3. Review extracted skills and experience
+
 4. Edit if necessary and confirm
 
-## 🤝 Contributing
-
+🤝 Contributing
 We welcome contributions from the community! Here's how you can help:
 
-1. **Fork the repository**
+1. Fork the repository
 
-   - Click the "Fork" button at the top right of the repository page
+Click the "Fork" button at the top right of the repository page
 
-2. **Clone your fork**
+2. Clone your fork
 
    ```bash
-   git clone https://github.com/B-Himanshu19/Stratify2
-   cd Stratify2
+    git clone https://github.com/B-Himanshu19/Stratify2
+    cd Stratify2
    ```
 
-3. **Create a feature branch**
+3. Create a feature branch
 
    ```bash
    git checkout -b feature/amazing-feature
    ```
 
-4. **Make your changes**
+4. Make your changes
 
-   - Implement your feature or fix
-   - Add or update tests as necessary
-   - Update documentation to reflect changes
+- Implement your feature or fix
 
-5. **Commit your changes**
+- Add or update tests as necessary
+
+- Update documentation to reflect changes
+
+5. Commit your changes
 
    ```bash
    git add .
    git commit -m "Add: detailed description of your changes"
    ```
 
-6. **Push to your branch**
+6. Push to your branch
 
    ```bash
    git push origin feature/amazing-feature
    ```
 
-7. **Create a pull request**
-   - Go to your fork on GitHub
-   - Click "New Pull Request"
-   - Select your feature branch
-   - Provide a clear description of your changes
+7. Create a pull request
 
-### Code Style Guidelines
+- Go to your fork on GitHub
 
-- Follow PEP 8 guidelines for Python code
-- Use ESLint and Prettier for JavaScript/React code
-- Write meaningful commit messages
-- Include comments for complex logic
-- Ensure all tests pass before submitting PR
+- Click "New Pull Request"
 
-## 📞 Support
+- Select your feature branch
 
+- Provide a clear description of your changes
+
+📞 Support
 For bug reports and feature requests, please open an issue on GitHub.
-
-## 🙏 Acknowledgements
-
-- All the contributors who have helped shape this project
-- Open source libraries that made this project possible

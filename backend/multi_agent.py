@@ -36,7 +36,7 @@ class MultiAgentConsensus:
 
         self.mistral_client = CustomMistralClient(
             api_key=api_key,
-            model="mistral-large-latest"
+            model="mistral-small"
         )
 
     def get_consensus(self, project_name, goals, team_members, tasks):
