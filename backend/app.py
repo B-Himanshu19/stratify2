@@ -119,5 +119,9 @@ def upload_resume():
 def health_check():
     return jsonify({"status": "active", "message": "Server is running"}), 200
 
+@app.route('/')
+def home():
+    return "✅ Stratify Backend is Live and Running on Railway!"
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
