@@ -85,10 +85,8 @@ def upload_resume():
             return jsonify({"status": "error", "message": "No selected file"}), 400
 
         # Ensure the 'uploads/' directory exists
-        upload_folder = "uploads"
-        if not os.path.exists(upload_folder):
-            os.makedirs(upload_folder)
-
+        import tempfile
+        upload_folder = tempfile.gettempdir()
         file_path = os.path.join(upload_folder, file.filename)
         file.save(file_path)
 
