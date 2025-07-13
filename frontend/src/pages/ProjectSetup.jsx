@@ -36,41 +36,45 @@ export default function ProjectSetup() {
   const handleTasksSubmit = async (tasks) => {
     // Convert tasks array to an object (task_definitions) as expected by the backend
     const taskDefinitions = {};
-    tasks.forEach(task => {
+    tasks.forEach((task) => {
       taskDefinitions[task.task_name] = {
         task_name: task.task_name,
         required_skill: task.required_skill,
-        duration: task.duration
+        duration: task.duration,
       };
     });
-  
+
     const finalData = {
       project_name: projectData.projectName,
-      goals: tasks.map(task => task.task_name),  // Task names as goals
+      goals: tasks.map((task) => task.task_name), // Task names as goals
       team_members: projectData.teamMembers,
-      task_definitions: taskDefinitions,  // Key change here
+      task_definitions: taskDefinitions, // Key change here
     };
-  
+
     console.log("Sending request payload:", JSON.stringify(finalData, null, 2));
-  
+
     try {
-      const response = await fetch("http://127.0.0.1:5000/plan", {  // Update URL if using a different endpoint
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(finalData),
-      });
-  
+      const response = await fetch(
+        `${import.meta.env.VITE_API_BASE_URL}/plan`,
+        {
+          // Update URL if using a different endpoint
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(finalData),
+        }
+      );
+
       console.log("Server response status:", response.status);
-  
+
       if (!response.ok) {
         const errorText = await response.text();
         console.error("Error response from server:", errorText);
         throw new Error(`Failed to generate project plan: ${errorText}`);
       }
-  
+
       const result = await response.json();
       console.log("Server response data:", result);
-  
+
       localStorage.setItem("projectResults", JSON.stringify(result));
       navigate("/results");
     } catch (error) {
@@ -89,7 +93,9 @@ export default function ProjectSetup() {
             <button
               key={step.id}
               className={`flex-1 text-center py-4 px-4 ${
-                currentStep === step.id ? "border-b-2 border-teal-500 text-teal-600 bg-teal-50" : "text-gray-500"
+                currentStep === step.id
+                  ? "border-b-2 border-teal-500 text-teal-600 bg-teal-50"
+                  : "text-gray-500"
               }`}
               disabled
             >
@@ -101,7 +107,10 @@ export default function ProjectSetup() {
         <div className="bg-white rounded-lg border p-8">
           {currentStep === 1 && (
             <ProjectDetailsForm
-              initialData={{ projectName: projectData.projectName, startDate: projectData.startDate }}
+              initialData={{
+                projectName: projectData.projectName,
+                startDate: projectData.startDate,
+              }}
               onSubmit={handleProjectDetailsSubmit}
             />
           )}
@@ -114,7 +123,10 @@ export default function ProjectSetup() {
           )}
 
           {currentStep === 3 && (
-            <TasksForm initialTasks={projectData.tasks} onSubmit={handleTasksSubmit} />
+            <TasksForm
+              initialTasks={projectData.tasks}
+              onSubmit={handleTasksSubmit}
+            />
           )}
         </div>
       </div>
